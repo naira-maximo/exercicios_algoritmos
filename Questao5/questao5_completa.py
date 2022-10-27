@@ -39,13 +39,15 @@ else:
 print('\n3) P = 2/pot(1/3) + 3/pot(3,3) + 5/pot(5,3) + 7/pot(7,3) + 11/pot(9,3) + ...')
 multiplos = 0
 impar = 1
+soma = 0
 n = int(input('Defina o número de termos da sequência, sendo um número inteiro e positivo >= 50: '))
 for numero in range(1, n+1):  # Quantidade de termos na sequência
     if 1 > 1:
         for i in range(2, n):  # Identificar os números primos
             if (n % i == 0):
                 multiplos += 1
-        if(multiplos==0):
-            calculo = n/(impar**3)
-            impar += 2
-    print(f'Resultado do {numero}º cálculo da sequência: {calculo}')
+                if(multiplos==0):
+                    calculo = n/(impar**3)
+                    impar += 2
+                    soma += calculo
+print(f'Resultado da {numero}º soma da sequência é: {soma}')
