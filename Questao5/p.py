@@ -4,34 +4,20 @@ dadas a respectiva entrada do usuário (sem utilizar vetor):
 sendo um número inteiro e positivo >= 50 informado pelo usuário (pot equivale a potenciação)'''
 
 # Ler o número informado pelo usuário para a sequência P
-print('\n3) P = 2/pot(1/3) + 3/pot(3,3) + 5/pot(5,3) + 7/pot(7,3) + 11/pot(9,3) + ...')
-multiplos = 0
+soma = 0
+primo = 1
 impar = 1
-soma = 1
-primo = 0
-n = int(input('Defina o número de termos da sequência, sendo um número inteiro e positivo >= 50: '))
-for numero in range(1, n+1):  # Quantidade de termos na sequência
-    for i in range (1, n+1):
-        if numero % i == 0 and numero != 1:
-            multiplos += 1
-            print(f'numero: {numero}')
-            print(f'i: {i}')
-            print(f'multiplos: {multiplos}')
-        # conferir dados
-    if multiplos == 2:
-        primo = numero
-        calculo = primo/(impar**3)
-        print(f'primo {primo}')
-        print(f'impar {impar}')
-        impar += 2
-        soma += calculo
-print(f'Resultado da {numero}º soma da sequência é: {soma}')
-# n = int(input('Defina o número de termos da sequência, sendo um número inteiro e positivo >= 50: '))
-# for a in range(1, n+1):
-#     for i in range(1, n+1):  # Identificar os números primos
-#         if (a % i == 0):
-#             multiplos += 1
-#             if multiplos == 0:
-#                 print(i)
-#                 print(a)
-#     print(f'Resultado da {a}ª soma da sequência é: {multiplos}')
+n = int(input('\nInsira o valor de N, sendo um número inteiro e positivo maior ou igual a 50: '))
+for i in range(n): # Sequência de 0 até o número que o usuário escolheu -1 (n termos)
+    verificador = 0  # Verificador de permanência do while (identificou um número primo)
+    while verificador == 0:
+        divisores = 0
+        primo = primo + 1
+        for divisor in range(1, primo + 1):
+            if primo % divisor == 0:
+                divisores = divisores + 1
+        if divisores == 2:  # Todo número primo é divisível por 1 e por ele mesmo. Portando, 2 divisores = primo. (exceto 1)
+            verificador = 1  # Encerra o while
+    soma += (primo/(impar**3)) 
+    impar = impar + 2
+print(f'Resultado da {n}ª soma da sequência é: {soma}')
