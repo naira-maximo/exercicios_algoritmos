@@ -1,42 +1,48 @@
-import random
+anterior = 0  # Armazena o último número para comparação
+contador = 0  # Quantidade de vezes que a condição é aceita (numero != 1 and numero == anterior + 1)
+contador2 = 0  # Soma armazenada para comparação com a contagem vigente
+valor = 0  # Número da contagem vigente, para possível desempate
+valor2 = 0  # Número armazenado para comparação com a contagem vigente
 
-anterior = 0
-valor = 0
-valor2 = 0
-contador = 0
-contador2 = 0
-
-for i in range(0, 30):
-    numero = int(random.randint(1, 5))
-    print(numero)
-    if numero != 1 and numero == anterior:
-        contador += 1
-        valor = numero
-        anterior = numero
-        if contador > contador2:
+for i in range(0, 10):
+    numero = int(input('Insira um número inteiro: '))
+    if numero == anterior:
+        if contador == 0:  # Sem essa função, a contagem fica com 1 a menos
+            contador += 2
+            valor = numero
+        else:
+            contador += 1
+            valor = numero
+    else:
+        if contador > contador2:  # Armazena a maior sequência como forma de comparação 
             contador2 = contador
+            contador = 0
             valor2 = valor
-        elif contador2 > contador:
+            valor = 0
+        elif contador == contador2:  # Caso a sequência 
+            if valor > valor2:
+                valor2 = valor
+                valor = 0
+                contador = 0
+            else:
+                contador = 0
+        else:
             contador = 0
             valor = 0
-        else:
-            print('teste')
-    else:
-        anterior = numero
-        contador2 = contador
-        valor2 = valor
-        contador = 0
-        valor = 0
-
+    anterior = numero
+print(f'Teste anterior {anterior}')
+print(f'Teste contador {contador}')
+print(f'Teste contador2 {contador2}')
+print(f'Teste soma {valor}')
+print(f'Teste soma2 {valor2}')
 if contador > contador2:
-    if valor >= valor2:
-        print(f'A maior sequência consecutiva de números em ordem crescente é {contador}, tendo como soma dos termos {valor}')
-    else:
-        print(f'A maior sequência consecutiva de números em ordem crescente é {contador}, 2 tendo como soma dos termos {valor2}')
+    print(f'A maior sequência consecutiva de números constantes é {contador}, sendo uma sequência de {valor}')
 elif contador2 > contador:
+    print(f'A maior sequência consecutiva de números constantes é {contador2}, sendo uma sequência de {valor2}')
+elif contador == contador2:
     if valor >= valor2:
-        print(f'2 A maior sequência consecutiva de números em ordem crescente é {contador2}, tendo como soma dos termos {valor}')
-    else:
-        print(f'2 A maior sequência consecutiva de números em ordem crescente é {contador2}, 2 tendo como soma dos termos {valor2}')
+        print(f'A maior sequência consecutiva de números constantes é {contador}, sendo uma sequência de {valor}')
+    elif valor < valor2:
+        print(f'A maior sequência consecutiva de números constantes é {contador}, sendo uma sequência de {valor2}')
 else:
-    print(f'Não houve sequência consecutiva de números em ordem crescente, sendo a contagem {contador} e {contador2}')
+    print(f'Não houve sequência consecutiva de números constantes, sendo a contagem {contador} e {contador2}')
