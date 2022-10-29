@@ -4,7 +4,7 @@ contador2 = 0  # Soma armazenada para comparação com a contagem vigente
 valor = 0  # Número da contagem vigente, para possível desempate
 valor2 = 0  # Número armazenado para comparação com a contagem vigente
 
-for i in range(0, 10):
+for i in range(0, 10):  # Utilizei um valor baixo para teste
     numero = int(input('Insira um número inteiro: '))
     if numero == anterior:
         if contador == 0:  # Sem essa função, a contagem fica com 1 a menos
@@ -19,8 +19,8 @@ for i in range(0, 10):
             contador = 0
             valor2 = valor
             valor = 0
-        elif contador == contador2:  # Caso a sequência 
-            if valor > valor2:
+        elif contador == contador2:  # Caso existam duas sequências iguais,
+            if valor > valor2:       # o maior valor (numero repetido) precisa ser armazenado até o final do for
                 valor2 = valor
                 valor = 0
                 contador = 0
@@ -30,11 +30,15 @@ for i in range(0, 10):
             contador = 0
             valor = 0
     anterior = numero
+
+# TESTES PARA SABER AS ATUALIZAÇÕES DAS VARIÁVEIS NO FOR
 print(f'Teste anterior {anterior}')
 print(f'Teste contador {contador}')
 print(f'Teste contador2 {contador2}')
 print(f'Teste soma {valor}')
 print(f'Teste soma2 {valor2}')
+
+# Condições para a resposta
 if contador > contador2:
     print(f'A maior sequência consecutiva de números constantes é {contador}, sendo uma sequência de {valor}')
 elif contador2 > contador:

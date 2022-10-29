@@ -25,8 +25,8 @@ for i in range(0, 150):
             contador = 0
             soma2 = soma
             soma = 0
-        elif contador == contador2:  # Caso a sequência 
-            if soma > soma2:
+        elif contador == contador2:  # Caso existam duas sequências iguais,
+            if soma > soma2:         # a maior soma precisa ser armazenada até o final do for
                 soma2 = soma
                 soma = 0
                 contador2 = contador
@@ -38,6 +38,8 @@ for i in range(0, 150):
             contador = 0
             soma = 0
     anterior = numero
+
+# Condições para a resposta
 if contador >= contador2:
     if soma >= soma2:
         print(f'A maior sequência consecutiva de números em ordem crescente é {contador}, tendo {soma} como a soma dos termos')
@@ -50,6 +52,7 @@ elif contador2 > contador:
         print(f'A maior sequência consecutiva de números em ordem crescente é {contador2}, tendo {soma2} como a soma dos termos')
 else:
     print(f'Não houve sequência consecutiva de números em ordem crescente, sendo a contagem {contador} e {contador2}')
+
 
 anterior = 0  # Armazena o último número para comparação
 contador = 0  # Quantidade de vezes que a condição é aceita (numero != 1 and numero == anterior + 1)
@@ -72,8 +75,8 @@ for i in range(0, 150):
             contador = 0
             valor2 = valor
             valor = 0
-        elif contador == contador2:  # Caso a sequência 
-            if valor > valor2:
+        elif contador == contador2:  # Caso existam duas sequências iguais,
+            if valor > valor2:       # o maior valor (numero repetido) precisa ser armazenado até o final do for
                 valor2 = valor
                 valor = 0
                 contador = 0
@@ -83,14 +86,16 @@ for i in range(0, 150):
             contador = 0
             valor = 0
     anterior = numero
+
+# Condições para a resposta
 if contador > contador2:
-    print(f'A maior sequência consecutiva de números constantes é {contador}, sendo uma sequência de {valor}')
+    print(f'A maior sequência consecutiva de números constantes é {contador}, sendo uma sequência de número {valor}')
 elif contador2 > contador:
-    print(f'A maior sequência consecutiva de números constantes é {contador2}, sendo uma sequência de {valor2}')
+    print(f'A maior sequência consecutiva de números constantes é {contador2}, sendo uma sequência de número {valor2}')
 elif contador == contador2:
     if valor >= valor2:
-        print(f'A maior sequência consecutiva de números constantes é {contador}, sendo uma sequência de {valor}')
+        print(f'A maior sequência consecutiva de números constantes é {contador}, sendo uma sequência de número {valor}')
     elif valor < valor2:
-        print(f'A maior sequência consecutiva de números constantes é {contador}, sendo uma sequência de {valor2}')
+        print(f'A maior sequência consecutiva de números constantes é {contador}, sendo uma sequência de número {valor2}')
 else:
     print(f'Não houve sequência consecutiva de números constantes, sendo a contagem {contador} e {contador2}')
