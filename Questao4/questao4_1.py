@@ -1,16 +1,13 @@
-anterior = 0  # Armazena o último número para comparação
-contador = 0  # Quantidade de vezes que a condição é aceita (numero != 1 and numero == anterior + 1)
+anterior = 1  # Armazena o último número para comparação
+contador = 1  # Quantidade de vezes que a condição é aceita (numero != 1 and numero == anterior + 1)
 contador2 = 0  # Soma armazenada para comparação com a contagem vigente
 soma = 0  # Soma da contagem vigente, para possível desempate
 soma2 = 0  # Soma armazenada para comparação com a contagem vigente
 
 for i in range(0, 10):  # Utilizei um valor baixo para teste
     numero = int(input('Insira um número inteiro: '))
-    if numero == anterior + 1:
-        if contador == 0:  # Sem essa função, a contagem fica com 1 a menos
-            contador += 2
-        else:
-            contador += 1
+    if numero == anterior + 1 and numero != 1:
+        contador += 1
         if soma == 0:  # Sem essa função, o primeiro número da sequência consecutiva é desprezado 
             soma += (numero + anterior)
         else:
@@ -18,7 +15,7 @@ for i in range(0, 10):  # Utilizei um valor baixo para teste
     else:
         if contador > contador2:  # Armazena a maior sequência como forma de comparação 
             contador2 = contador
-            contador = 0
+            contador = 1
             soma2 = soma
             soma = 0
         elif contador == contador2:  # Caso existam duas sequências iguais,
@@ -26,12 +23,12 @@ for i in range(0, 10):  # Utilizei um valor baixo para teste
                 soma2 = soma
                 soma = 0
                 contador2 = contador
-                contador = 0
+                contador = 1
             else:
-                contador = 0
+                contador = 1
                 soma = 0
         else:
-            contador = 0
+            contador = 1
             soma = 0
     anterior = numero
 
